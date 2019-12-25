@@ -1,3 +1,3 @@
-import App from "./AppView";
+import App from "./AppContainer";
 
 export default App;

@@ -1,20 +1,14 @@
-import React, {useState, useEffect} from "react";
-import {useWebsocket} from "../../utilities/useWebsocket";
+import React from "react";
+import Trades from "../Trades/TradesContainer"
 
 function AppView() {
-  const [price, setPrice] = useState("");
-
-  const websocket = useWebsocket("wss://ws-feed.pro.coinbase.com");
-
-  useEffect(() => {
-    websocket.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-      setPrice(data.price);
-    }
-  }, []);
+  //useWebsocket();
 
   return (
-    <header>{price}</header>
+    <div>
+      <header>Header</header>
+      <Trades/>
+    </div>
   )
 }
 
