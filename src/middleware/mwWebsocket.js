@@ -1,19 +1,15 @@
 import * as actions from "../modules/websocket";
-import {updatePrice} from "../modules/ticker";
+import {subToTicker} from "../modules/ticker";
 import {w3cwebsocket as Websocket} from "websocket";
+
+const host = "wss://ws-feed.pro.coinbase.com";
 
 const mwWebsocket = () => {
   let client = null;
 
   const onOpen = dispatch => (message) => {
-    client.send(JSON.stringify({
-      "type": "subscribe",
-      "product_ids": [
-        "BTC-USD"
-      ],
-      "channels": ["ticker"]
-    }));
-    dispatch(actions.wsConnected(message.target.url));
+    client.send(JSON.stringify(subToTicker("BTC-USD")));
+    dispatch(actions.wsConnected());
   };
 
   const onClose = dispatch => () => {
@@ -23,14 +19,20 @@ const mwWebsocket = () => {
   const onMessage = dispatch => (message) => {
     const payload = (JSON.parse(message.data));
 
-    switch(payload.type) {
+    dispatch(actions.onMessage(payload));
+
+    /*switch(payload.type) {
       case "ticker":
         dispatch(updatePrice(parseFloat(payload.price).toFixed(2)));
         break;
 
+      case "status":
+        dispatch(setAllProducts(payload.products.map((product) => {return product.id})));
+        break;
+
       default:
         console.log(payload);
-    }
+    }*/
   };
 
   return next => (action) => {
@@ -40,7 +42,7 @@ const mwWebsocket = () => {
           client.close();
         }
 
-        client = new Websocket(action.host);
+        client = new Websocket(host);
 
         client.onopen = onOpen(next);
         client.onclose = onClose(next);

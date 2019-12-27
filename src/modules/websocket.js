@@ -1,21 +1,25 @@
-export const wsConnect = host => ({ type: "WS_CONNECT", host });
-//export const wsConnecting = host => ({ type: "WS_CONNECTING", host });
-export const wsConnected = host => ({ type: "WS_CONNECTED", host });
-export const wsDisconnect = host => ({ type: "WS_DISCONNECT", host });
-export const wsDisconnected = host => ({ type: "WS_DISCONNECTED", host });
+export const wsConnect = () => ({type: "WS_CONNECT"});
+export const wsConnected = () => ({type: "WS_CONNECTED"});
+export const wsDisconnected = () => ({type: "WS_DISCONNECTED"});
+export const onMessage = message => ({type: "ON_MESSAGE", message});
 
 const websocketInitialState = {
-  connected: false
+  connected: false,
+  message: "",
+  disconnects: 0
 };
 
 export const websocketReducer = (state = {...websocketInitialState}, action) => {
   switch(action.type) {
-    case "WS_CONNECT":
-      return {...state, host: action.host};
     case "WS_CONNECTED":
-      return {...state, host: action.host, connected: true};
-    case "WS_DISCONNECT":
-      return {...state, host: action.host};
+      return {...state, connected: true};
+
+    case "WS_DISCONNECTED":
+      return {...state, connected: false, disconnects: state.disconnects + 1};
+
+    case "ON_MESSAGE":
+      return {...state, message: action.message};
+
     default:
       return state;
   }

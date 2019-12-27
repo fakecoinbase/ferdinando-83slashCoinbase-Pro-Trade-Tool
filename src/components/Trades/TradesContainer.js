@@ -2,13 +2,11 @@ import React from "react";
 import {useSelector} from "react-redux";
 
 function TradesContainer() {
-  const trades = useSelector(state => state.ticker);
+  const websocket = useSelector(state => state.websocket);
 
   return (
     <div>
-      <h1>{trades.price}</h1>
-      <button type={"button"} onClick={"initWebsocket"}>Initiate Websocket</button>
-      <button type={"button"} onClick={"endWebsocket"}>End Websocket</button>
+      <h1>{websocket.message.price}</h1>
     </div>
   )
 }

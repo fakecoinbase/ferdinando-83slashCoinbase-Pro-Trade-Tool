@@ -1,15 +1,15 @@
 import React, {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import AppView from "./AppView";
 import {wsConnect} from "../../modules/websocket";
 
 function AppContainer() {
-  const host = "wss://ws-feed.pro.coinbase.com";
+  const websocket = useSelector(state => state.websocket);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(wsConnect(host));
-  }, []);
+    dispatch(wsConnect());
+  }, [websocket.disconnects]);
 
   return (
     <AppView/>
