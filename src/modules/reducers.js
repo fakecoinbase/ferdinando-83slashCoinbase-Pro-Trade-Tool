@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
 import {websocketReducer} from "./websocket";
-import {tickerReducer} from "./ticker";
+import {bookReducer} from "./book";
 
 const rootReducer = combineReducers({
   websocket: websocketReducer,
-  ticker: tickerReducer
+  book: bookReducer
 });
 
 export default rootReducer;
