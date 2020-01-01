@@ -4,8 +4,6 @@ export const wsDisconnected = () => ({type: "WS_DISCONNECTED"});
 export const onMessage = message => ({type: "ON_MESSAGE", message});
 
 const websocketInitialState = {
-  connected: false,
-  message: "",
   disconnects: 0
 };
 
@@ -16,9 +14,6 @@ export const websocketReducer = (state = {...websocketInitialState}, action) => 
 
     case "WS_DISCONNECTED":
       return {...state, connected: false, disconnects: state.disconnects + 1};
-
-    case "ON_MESSAGE":
-      return {...state, message: action.message};
 
     default:
       return state;

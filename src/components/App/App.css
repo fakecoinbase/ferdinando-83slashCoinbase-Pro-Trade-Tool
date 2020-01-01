@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+.app {
+    background-color: #232323;
+}
+
+.sidebar {
+    background-color: #343434;
+    color: #aaaaaa;
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
