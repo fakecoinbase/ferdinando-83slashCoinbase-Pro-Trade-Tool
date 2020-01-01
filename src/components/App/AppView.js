@@ -1,35 +1,27 @@
 import React from "react";
 import Header from "../Header";
-import Ticker from "../Ticker"
 import Products from "../Products"
-import {useSelector} from "react-redux";
+import "./App.css"
 
-function AppView() {
-  const book = useSelector(state => state.book);
+const AppView = (props) => {
   let key = 0;
+  const pairList = [];
 
-  const keys = Object.entries(book.pairs);
-  let products = [];
-
-  keys.sort();
-
-  for (let product of keys) {
-    products.push(<Products key={key++} product={product}/>);
+  for (let pair of props.pairs) {
+    pairList.push(<Products key={key++} product={pair.product} price={pair.price}/>);
   }
 
   return (
-    <div className={"container-fluid p-0"}>
-      <div className={"row no-gutters"}>
-        <div className={"col-1.5"}>
+      <div className={"app uk-grid uk-grid-collapse"}>
+        <div className={"uk-width-1-6 sidebar"}>
           <Header/>
-          {products}
+          {pairList}
         </div>
-        <div className={"col"}>
-          <Ticker/>
+        <div className={"uk-padding-small"}>
+          Pins coming soon...
         </div>
       </div>
-    </div>
   )
-}
+};
 
 export default AppView;

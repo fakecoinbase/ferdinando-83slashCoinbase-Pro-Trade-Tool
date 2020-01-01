@@ -1,35 +1,37 @@
-import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect, useState, useRef} from "react";
+import ProductsView from "./ProductsView";
 
 function ProductsContainer(props) {
-  const book = useSelector(state => state.book);
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState("product-default");
+
+  const usePrevious = (value) => {
+    const ref = useRef();
+
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+
+    return ref.current;
+  };
+
+  const previousPrice = usePrevious(props.price);
 
   useEffect(() => {
-    setColor("#000000");
-    setTimeout(() => setColor("#ffffff"), 200);
-  }, [props.product[1]]);
+    if (props.price > previousPrice)
+      setColor("product-increase");
 
-  let cardStyle = {
-    padding: "2px",
-    backgroundColor: color
-  };
+    if (props.price < previousPrice)
+      setColor("product-decrease");
 
-  const listItemStyle = {
-    fontSize: "12px",
-    padding: "2px"
-  };
+    setTimeout(() => setColor("product-default"), 2000);
+  }, [props.price]);
 
   return (
-    <div className="card rounded-0" style={cardStyle}>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item" style={listItemStyle}>
-          <span className={"float-left"}>{props.product[0]}</span>
-          <span className={"float-right"}>{props.product[1]}</span>
-        </li>
-      </ul>
+    <div>
+      <ProductsView product={props.product} price={props.price} color={color}/>
     </div>
   )
+
 }
 
 export default ProductsContainer;

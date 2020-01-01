@@ -1,20 +1,35 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import HeaderView from "./HeaderView";
 
 const HeaderContainer = () => {
-  const currentDate = new Date();
-  const currentTime = currentDate.getHours() % 12 + ":" + currentDate.getMinutes() +
-    " " + (currentDate.getHours() > 12 ? "PM" : "AM");
+  const [today, setToday] = useState(new Date);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const getUpdate = () => setTimeout(() => setToday(new Date()), 1000);
+
+  const updateNow = () => {
+    const [month, day, year, hour, minute, second, period] = [
+      today.toLocaleString("default", {month: "short"}),
+      today.getDate(),
+      today.getFullYear(),
+      today.getHours() ? (today.getHours() % 12).toLocaleString("default", {minimumIntegerDigits: 2}) : 12,
+      today.getMinutes().toLocaleString("default", {minimumIntegerDigits: 2}),
+      today.getSeconds().toLocaleString("default", {minimumIntegerDigits: 2}),
+      today.getHours() < 12 ? "AM" : "PM"
+    ];
+
+    setDate(month + " " + day + " " + year);
+    setTime(hour + ":" + minute + ":" + second + " " + period);
+  };
+
+  useEffect(() => {
+    getUpdate();
+    updateNow();
+  }, [today]);
 
   return (
-    <div className="card rounded-0">
-      <img src="" className="card-img-top" alt=""/>
-        <div className="card-body">
-          <p className="card-text">
-            <span style={{fontWeight: "bold", textDecoration: "underline"}}>TRADE TOOL</span> <br/>
-            <span style={{fontSize: "22px"}}>{currentTime.toString()}</span> <br/>
-            {currentDate.toLocaleString("default", {month: "short"}) + " " + currentDate.getDate() + ", " + currentDate.getFullYear()}
-          </p>
-        </div>
+    <div>
+      <HeaderView date={date} time={time}/>
     </div>
   )
 };
