@@ -1,0 +1,18 @@
+.pin {
+    background-color: #343434;
+    color: #aaaaaa;
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.pin .uk-card-title {
+    font-size: 22px;
+}
+
+.pin .uk-card-body {
+    font-size: 16px;
+    padding: 4px;
+}
+
+.uk-card-header {
+    background-color: #666666;
+}
