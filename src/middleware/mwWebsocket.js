@@ -1,5 +1,5 @@
 import * as actions from "../modules/websocket";
-import {statusReady, subToStatus, subToTicker} from "../modules/book";
+import {subToStatus, subToTicker} from "../modules/book";
 import {w3cwebsocket as Websocket} from "websocket";
 
 const host = "wss://ws-feed.pro.coinbase.com";
@@ -20,8 +20,6 @@ const mwWebsocket = store => {
   };
 
   return next => (action) => {
-    const book = store.getState().book;
-
     switch (action.type) {
       case "WS_CONNECT":
         if (client !== null) {
@@ -47,7 +45,7 @@ const mwWebsocket = store => {
         break;
 
       case "STATUS_READY":
-        client.send(JSON.stringify(subToTicker(Object.keys(book.pairs))));
+        client.send(JSON.stringify(subToTicker(action.ids)));
         break;
 
       default:
