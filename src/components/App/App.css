@@ -2,12 +2,56 @@ body {
     margin: 0;
 }
 
+button {
+    outline: none;
+}
+
 .app {
-    background-color: #232323;
+    height: 100vh;
+    background-color: #0b0c10;
 }
 
 .sidebar {
-    background-color: #343434;
+    background-color: #222629;
     color: #aaaaaa;
     box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.header {
+    height: 20vh;
+    padding: 1vmin;
+}
+
+.products {
+    height: 80vh;
+    padding: 1vmin;
+}
+
+.board {
+
+}
+
+.pins {
+    height: 35vh;
+    padding: 1vmin;
+}
+
+.arbitrages {
+    height: 65vh;
+    padding: 1vmin;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1);
+    background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.8);
+    background-color: transparent;
 }

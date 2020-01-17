@@ -1,37 +1,30 @@
-import React, {useEffect, useState, useRef} from "react";
+import React from "react";
+import {useSelector, shallowEqual, useDispatch} from "react-redux";
+import {pinProduct, selectIds, selectProducts} from "../../modules/book";
 import ProductsView from "./ProductsView";
 
-function ProductsContainer(props) {
-  const [color, setColor] = useState("product-default");
+function ProductsContainer() {
+  const productsList = useSelector(selectProducts, shallowEqual);
+  const idsList = useSelector(selectIds);
+  const dispatch = useDispatch();
+  const viewList = [];
 
-  const usePrevious = (value) => {
-    const ref = useRef();
-
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-
-    return ref.current;
+  const pinItem = (product) => {
+    if ((idsList.length - productsList.length) < 5) {
+      dispatch(pinProduct(product));
+    }
+    else {
+      console.log("Max Pins Reached");
+    }
   };
 
-  const previousPrice = usePrevious(props.price);
-
-  useEffect(() => {
-    if (props.price > previousPrice)
-      setColor("product-increase");
-
-    if (props.price < previousPrice)
-      setColor("product-decrease");
-
-    setTimeout(() => setColor("product-default"), 2000);
-  }, [props.price]);
+  productsList.forEach(([key, data]) => viewList.push(<ProductsView key={key} product={key} data={data} pinItem={pinItem}/>));
 
   return (
     <div>
-      <ProductsView product={props.product} price={props.price} color={color}/>
+      {viewList}
     </div>
   )
-
 }
 
 export default ProductsContainer;

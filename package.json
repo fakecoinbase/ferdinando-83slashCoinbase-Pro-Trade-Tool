@@ -1,6 +1,6 @@
 {
   "name": "coinbase-pro-trade-tool",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tool for interacting with Coinbase Pro's trading platform.",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "react-scripts": "^3.3.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "websocket": "^1.0.31"
   },
   "browserslist": {
