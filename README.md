@@ -1,0 +1,2 @@
+# Coinbase-Pro-Trade-Tool
+An application for tracking and viewing trade data retrieved through a WebSocket connection, utilizing Coinbase’s GDAX API. Trade data is filtered through an algorithm that determines at what price and volumes to buy and sell highly fluid cryptocurrencies, and then presented to the user through a dashboard interface. Written in JavaScript, along with React, Redux, WebSocket, and using CSS and UIkit.
