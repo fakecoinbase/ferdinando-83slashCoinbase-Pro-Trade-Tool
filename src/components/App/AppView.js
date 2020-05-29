@@ -2,36 +2,32 @@ import React from "react";
 import Header from "../Header";
 import Products from "../Products";
 import Pins from "../Pins";
-import Arbitrage from "../Arbitrage"
+import Monitor from "../Monitor"
 import "./App.css"
 
 const AppView = () => {
 
   return (
-    <div className={"app uk-grid uk-grid-collapse"}>
-      <div className={"sidebar uk-width-1-6"}>
-        <div className="header uk-section">
+    <div className={"app"}>
+      <div className={"sidebar col"}>
+        <div className="header row">
           <div className="uk-container uk-padding-remove uk-width-1-1">
             <Header/>
           </div>
         </div>
 
-        <div className="products uk-section uk-overflow-auto scrollbar">
+        <div className="products row scroll-y scrollbar">
           <div className="uk-container uk-padding-remove uk-width-1-1">
             <Products/>
           </div>
         </div>
       </div>
-      <div className={"board uk-width-5-6"}>
-        <div className={"pins uk-section uk-overflow-auto scrollbar"}>
-          <div className={"uk-container uk-padding-remove uk-width-1-1"}>
-            <Pins/>
-          </div>
+      <div className={"board col"}>
+        <div className={"pins row scroll-y scrollbar"}>
+          <Pins/>
         </div>
-        <div className={"arbitrages uk-section"}>
-          <div className={"uk-container uk-padding-small uk-width-1-1"}>
-            <Arbitrage/>
-          </div>
+        <div className={"monitors row"}>
+          <Monitor/>
         </div>
       </div>
     </div>
