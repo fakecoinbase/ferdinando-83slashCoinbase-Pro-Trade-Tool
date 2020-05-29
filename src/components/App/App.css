@@ -2,12 +2,34 @@ body {
     margin: 0;
 }
 
+.row, .col {
+    overflow: hidden;
+    position: absolute;
+}
+
+.row {
+    left: 0;
+    right: 0;
+}
+
+.col {
+    top: 0;
+    bottom: 0;
+}
+
+.scroll-x {
+    overflow-x: auto;
+}
+
+.scroll-y {
+    overflow-y: auto;
+}
+
 button {
     outline: none;
 }
 
 .app {
-    height: 100vh;
     background-color: #0b0c10;
 }
 
@@ -17,32 +39,59 @@ button {
     box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
+.sidebar.col {
+    width: 15%;
+}
+
 .header {
-    height: 20vh;
-    padding: 1vmin;
+    /*padding: 1vmin;*/
+}
+
+.header.row {
+    height: 125px;
 }
 
 .products {
-    height: 80vh;
-    padding: 1vmin;
+    /*padding: 1vmin;*/
+}
+
+.products.row {
+    top: 125px;
+    bottom: 15px;
 }
 
 .board {
+    background-color: inherit;
+}
 
+.board.col {
+    left: 15%;
+    right: 0;
 }
 
 .pins {
-    height: 35vh;
-    padding: 1vmin;
+    /*padding: 1vmin;*/
 }
 
-.arbitrages {
-    height: 65vh;
-    padding: 1vmin;
+.pins.row {
+    height: 33%;
+}
+
+.monitors {
+    background-color: #222629;
+    color: #aaaaaa;
+    margin: 15px;
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.monitors.row {
+    top: 33%;
+    bottom: 0;
 }
 
 .scrollbar::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
     background-color: transparent;
 }
 
@@ -54,4 +103,8 @@ button {
 .scrollbar::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.8);
     background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-corner {
+    color: transparent;
 }
