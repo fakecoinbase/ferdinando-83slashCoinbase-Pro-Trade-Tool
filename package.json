@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ferdinando-83/Coinbase-Pro-Trade-Tool#readme",
   "dependencies": {
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
