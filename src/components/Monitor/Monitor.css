@@ -1,10 +1,17 @@
-.arbitrage {
+.monitor {
     background-color: #222629;
     color: #aaaaaa;
     box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
-.arbitrage-default {
+.monitor-default {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.81);
     font-size: 16px;
+
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    overflow: auto;
 }
