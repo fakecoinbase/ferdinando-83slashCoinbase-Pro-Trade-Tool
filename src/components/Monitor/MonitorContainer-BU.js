@@ -2,10 +2,10 @@ import React, {useEffect} from "react";
 import {useState} from "react"
 import MonitorView from "./MonitorView"
 import {useSelector, shallowEqual} from "react-redux";
-import {selectLink} from "../../modules/book";
+import {selectMonitors} from "../../modules/book";
 
 const MonitorContainer = () => {
-  const link = useSelector(selectLink, shallowEqual);
+  const link = useSelector(selectMonitors, shallowEqual);
   const [portfolio, setPortfolio] = useState({
     nextBuy: 0,
     tier: 1,
