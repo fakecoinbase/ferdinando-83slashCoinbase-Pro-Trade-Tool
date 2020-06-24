@@ -30,7 +30,7 @@ const PinsView = (props) => {
           <div className={`uk-card-body uk-text-left ${color}`}>
             Price:<span className={"uk-float-right"}>{props.data.price}</span><br/>
             Side:<span className={"uk-float-right"}>{props.data.side}</span><br/>
-            Size:<span className={"uk-float-right"}>{props.data.size}</span><br/>
+            Size:<span className={"uk-float-right"}>{props.data.last_size}</span><br/>
             Best Bid:<span className={"uk-float-right"}>{props.data.best_bid}</span><br/>
             Best Ask:<span className={"uk-float-right"}>{props.data.best_ask}</span><br/>
             <button onClick={() => props.unpinItem(props.product)} uk-icon="icon: minus; ratio: .5"/>
