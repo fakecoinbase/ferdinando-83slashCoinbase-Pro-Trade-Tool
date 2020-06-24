@@ -1,6 +1,7 @@
 import * as actions from "../modules/websocket";
 import {subToStatus, subToTicker} from "../modules/book";
 import {w3cwebsocket as Websocket} from "websocket";
+import _ from "lodash";
 
 const host = "wss://ws-feed.pro.coinbase.com";
 
@@ -45,7 +46,7 @@ const mwWebsocket = store => {
         break;
 
       case "STATUS_READY":
-        client.send(JSON.stringify(subToTicker(action.ids)));
+        client.send(JSON.stringify(subToTicker(_.keys(action.products))));
         break;
 
       default:
