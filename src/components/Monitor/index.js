@@ -1,3 +1,3 @@
-import Arbitrage from "./ArbitrageContainer";
+import Monitor from "./MonitorContainer";
 
-export default Arbitrage;
+export default Monitor;
